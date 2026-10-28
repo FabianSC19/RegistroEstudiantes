@@ -8,6 +8,11 @@ const students = [
 ];
 
 const studentList = document.querySelector("#student-list");
+const form = document.querySelector("#student-form");
+const nameInput = document.querySelector("#first-name");
+const surnameInput = document.querySelector("#last-name");
+const gradeInput = document.querySelector("#grade");
+const message = document.querySelector("#form-message");
 
 function createCell(text, className = "") {
   const cell = document.createElement("td");
@@ -42,6 +47,71 @@ function renderStudents() {
   });
 
   document.querySelector("#student-count").textContent = `${students.length} estudiantes`;
+  updateSummary();
 }
+
+function updateSummary() {
+  const highest = students.reduce((best, student) => student.nota > best.nota ? student : best);
+  const lowest = students.reduce((best, student) => student.nota < best.nota ? student : best);
+  const average = students.reduce((total, student) => total + student.nota, 0) / students.length;
+
+  document.querySelector("#highest-grade").textContent = String(highest.nota);
+  document.querySelector("#highest-student").textContent = `${highest.nombre} ${highest.apellidos}`;
+  document.querySelector("#average-grade").textContent = average.toFixed(1);
+  document.querySelector("#lowest-grade").textContent = String(lowest.nota);
+  document.querySelector("#lowest-student").textContent = `${lowest.nombre} ${lowest.apellidos}`;
+}
+
+function clearValidation() {
+  [nameInput, surnameInput, gradeInput].forEach((input) => input.removeAttribute("aria-invalid"));
+  message.textContent = "";
+  message.classList.remove("success");
+}
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  clearValidation();
+
+  const nombre = nameInput.value.trim();
+  const apellidos = surnameInput.value.trim();
+  const rawGrade = gradeInput.value.trim();
+  const nota = Number(rawGrade);
+  let firstInvalidField = null;
+
+  if (!nombre) {
+    nameInput.setAttribute("aria-invalid", "true");
+    firstInvalidField ??= nameInput;
+  }
+  if (!apellidos) {
+    surnameInput.setAttribute("aria-invalid", "true");
+    firstInvalidField ??= surnameInput;
+  }
+  if (!rawGrade || !Number.isFinite(nota) || nota < 0 || nota > 100) {
+    gradeInput.setAttribute("aria-invalid", "true");
+    firstInvalidField ??= gradeInput;
+  }
+
+  if (firstInvalidField) {
+    message.textContent = !nombre || !apellidos || !rawGrade
+      ? "Todos los campos son obligatorios. La nota debe estar entre 0 y 100."
+      : "La nota debe ser un número entre 0 y 100.";
+    firstInvalidField.focus();
+    return;
+  }
+
+  students.push({ nombre, apellidos, nota });
+  renderStudents();
+  form.reset();
+  message.textContent = "Estudiante agregado correctamente.";
+  message.classList.add("success");
+  nameInput.focus();
+});
+
+[nameInput, surnameInput, gradeInput].forEach((input) => {
+  input.addEventListener("input", () => {
+    input.removeAttribute("aria-invalid");
+    if (!message.classList.contains("success")) message.textContent = "";
+  });
+});
 
 renderStudents();
