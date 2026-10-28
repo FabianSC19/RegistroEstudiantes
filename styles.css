@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  color-scheme: light;
+  --ink: #202a3b;
+  --muted: #788397;
+  --line: #e9edf3;
+  --blue: #4569d8;
+  --blue-dark: #3658c4;
+  --canvas: #f5f7fb;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--canvas); color: var(--ink); font-family: 'DM Sans', 'Segoe UI', sans-serif; font-size: 14px; -webkit-font-smoothing: antialiased; }
+.site-header { height: 68px; background: #fff; border-bottom: 1px solid #edf0f5; }
+.header-inner { height: 100%; max-width: 1120px; padding: 0 28px; margin: auto; display: flex; align-items: center; justify-content: space-between; }
+.brand { color: #29354a; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; font: 800 15px 'Manrope', 'Segoe UI', sans-serif; letter-spacing: -.35px; }
+.brand-mark { display: grid; place-items: center; width: 31px; height: 31px; color: #fff; background: #4d6fd8; border-radius: 9px; font-size: 10px; letter-spacing: -.6px; box-shadow: 0 3px 8px #4569d833; }
+.brand-light { color: #738097; font-weight: 600; }
+.header-note { display: flex; align-items: center; gap: 8px; color: #748096; font-size: 12px; }
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: #55ba89; box-shadow: 0 0 0 3px #55ba891c; }
+.page-shell { max-width: 1016px; padding: 38px 28px 22px; margin: 0 auto; }
+.intro { margin: 0 0 24px; }
+.eyebrow { margin: 0 0 8px; color: #77849a; font-size: 10px; font-weight: 700; letter-spacing: 1.25px; }
+.eyebrow span { padding: 0 4px; color: #a8b2c2; }
+h1, h2, p { margin-top: 0; }
+h1, h2 { font-family: 'Manrope', 'Segoe UI', sans-serif; letter-spacing: -.65px; }
+h1 { margin-bottom: 6px; color: #202b3d; font-size: clamp(25px, 4vw, 31px); line-height: 1.2; }
+.intro-copy { margin: 0; color: #7b879a; font-size: 13px; }
+.card { background: #fff; border: 1px solid #e9edf3; border-radius: 12px; box-shadow: 0 3px 12px #293b5b08; }
+.form-card { padding: 21px 23px 17px; margin-bottom: 18px; }
+.section-heading { display: flex; align-items: center; gap: 12px; }
+.heading-icon { display: grid; place-items: center; flex: 0 0 35px; width: 35px; height: 35px; color: #6682dc; background: #eef2ff; border-radius: 10px; font-size: 22px; font-weight: 400; }
+.heading-icon-blue { color: #fff; background: #5576dd; font-size: 18px; }
+.section-heading h2 { margin: 0 0 3px; color: #263247; font-size: 15px; font-weight: 750; letter-spacing: -.25px; }
+.section-heading p { margin: 0; color: #8590a2; font-size: 11.5px; }
+.form-grid { display: grid; grid-template-columns: 1.15fr 1.3fr .8fr auto; align-items: end; gap: 13px; margin-top: 20px; }
+.field label { display: block; margin: 0 0 7px; color: #49566b; font-size: 11px; font-weight: 600; }
+.field input { width: 100%; height: 39px; padding: 0 12px; border: 1px solid #dfe5ee; border-radius: 7px; outline: none; background: #fff; color: #28354a; font: inherit; font-size: 12px; transition: border-color .18s, box-shadow .18s; }
+.field input::placeholder { color: #aab3c1; }
+.field input:focus { border-color: #7290e5; box-shadow: 0 0 0 3px #5576dd1c; }
+.field input[aria-invalid="true"] { border-color: #dc6970; }
+.grade-input-wrap { position: relative; }
+.grade-input-wrap input { padding-right: 43px; }
+.grade-input-wrap span { position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #98a2b2; font-size: 10px; pointer-events: none; }
+.button { height: 39px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 0 15px; border: 0; border-radius: 7px; cursor: pointer; font: 600 11.5px 'DM Sans', 'Segoe UI', sans-serif; transition: background .18s, box-shadow .18s, transform .18s; white-space: nowrap; }
+.button-primary { color: #fff; background: #4e6fd4; box-shadow: 0 3px 7px #4569d82b; }
+.button-primary:hover { background: var(--blue-dark); box-shadow: 0 5px 12px #4569d83d; transform: translateY(-1px); }
+.button-primary:focus-visible { outline: 3px solid #9eaff0; outline-offset: 2px; }
+.form-message { min-height: 16px; margin: 9px 0 -4px; color: #bb424a; font-size: 11px; }
+.form-message.success { color: #26805a; }
+.roster-card { padding: 20px 23px 14px; }
+.roster-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 17px; }
+.count-badge { padding: 6px 10px; color: #65728a; background: #f3f5f9; border: 1px solid #eaedf2; border-radius: 20px; font-size: 10px; font-weight: 600; white-space: nowrap; }
+.table-wrap { overflow-x: auto; border: 1px solid #e7ebf2; border-radius: 8px; }
+table { width: 100%; border-collapse: collapse; text-align: left; font-size: 12px; }
+thead { background: #f7f8fb; }
+th { height: 38px; color: #7b8798; font-size: 10px; font-weight: 700; letter-spacing: .35px; }
+th, td { padding: 0 15px; border-bottom: 1px solid #edf0f4; }
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr { transition: background .16s; }
+tbody tr:hover { background: #f8faff; }
+td { height: 45px; color: #475469; }
+th:first-child, td:first-child { width: 52px; color: #9aa4b3; }
+.student-name { color: #2b374b; font-weight: 600; }
+.grade-pill { display: inline-flex; min-width: 38px; justify-content: center; padding: 4px 8px; border-radius: 5px; font-size: 11px; font-weight: 700; }
+.grade-high { color: #238354; background: #e8f6ee; }
+.grade-low { color: #bf454b; background: #fcebed; }
+.grade-standard { color: #65728a; background: #f0f2f6; }
+.result-text { color: #8994a5; font-size: 10px; }
+.legend { display: flex; align-items: center; gap: 18px; padding: 12px 2px 0; color: #8490a1; font-size: 10px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend-dot { width: 7px; height: 7px; border-radius: 50%; }
+.legend-green { background: #51ae7c; }
+.legend-red { background: #d75f67; }
+.summary-section { margin-top: 28px; }
+.summary-title-row { display: flex; align-items: end; justify-content: space-between; margin-bottom: 13px; }
+.summary-title-row .eyebrow { margin-bottom: 4px; }
+.summary-title-row h2 { margin: 0; color: #263247; font-size: 17px; }
+.summary-caption { padding-bottom: 2px; color: #98a2b2; font-size: 10px; }
+.summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; }
+.summary-card { min-height: 112px; padding: 15px 17px; border: 1px solid #e8ecf2; border-radius: 10px; background: #fff; box-shadow: 0 3px 12px #293b5b06; }
+.summary-label { display: flex; align-items: center; gap: 8px; color: #68758a; font-size: 10.5px; font-weight: 600; }
+.summary-icon { display: grid; place-items: center; width: 23px; height: 23px; color: #4e70d3; background: #eff2ff; border-radius: 7px; font-size: 14px; }
+.average-card .summary-icon { color: #27906e; background: #eaf7f2; }
+.low-card .summary-icon { color: #d1714c; background: #fff2e9; }
+.summary-value { margin: 10px 0 1px; color: #263247; font: 800 22px 'Manrope', 'Segoe UI', sans-serif; letter-spacing: -.6px; line-height: 1; }
+.summary-detail { overflow: hidden; margin: 0; color: #929cad; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.page-footer { display: flex; justify-content: space-between; margin-top: 23px; padding-top: 14px; border-top: 1px solid #e8ecf2; color: #9aa4b3; font-size: 10px; }
+.page-footer i { padding: 0 4px; color: #b2bdcc; font-style: normal; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+@media (max-width: 760px) {
+  .page-shell { padding: 30px 20px 20px; }
+  .form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .button-primary { grid-column: 1 / -1; }
+}
+@media (max-width: 520px) {
+  .site-header { height: 58px; }
+  .header-inner { padding: 0 17px; }
+  .header-note { font-size: 10px; }
+  .page-shell { padding: 25px 15px 18px; }
+  .form-card, .roster-card { padding: 17px 15px 13px; }
+  .form-grid { grid-template-columns: 1fr; gap: 12px; }
+  .button-primary { grid-column: auto; }
+  .summary-grid { grid-template-columns: 1fr; gap: 9px; }
+  .summary-card { min-height: 99px; }
+  .summary-title-row { align-items: start; }
+  .summary-caption { max-width: 110px; text-align: right; line-height: 1.4; }
+  .legend { flex-wrap: wrap; gap: 8px 14px; }
+  th, td { padding: 0 10px; }
+  th:first-child, td:first-child { width: 38px; }
+}
