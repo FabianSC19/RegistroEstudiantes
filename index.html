@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>Registro de estudiantes</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#inicio" aria-label="Registro Académico, inicio">
+        <span class="brand-mark" aria-hidden="true">RA</span>
+        <span>Registro<span class="brand-light"> Académico</span></span>
+      </a>
+      <span class="header-note"><span class="status-dot" aria-hidden="true"></span>Panel de estudiantes</span>
+    </div>
+  </header>
+
+  <main id="inicio" class="page-shell">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">GESTIÓN ACADÉMICA <span>•</span> CURSO 2026</p>
+      <h1 id="page-title">Registro de estudiantes</h1>
+      <p class="intro-copy">Agrega estudiantes y consulta sus calificaciones en un solo lugar.</p>
+    </section>
+
+    <section class="card form-card" aria-labelledby="form-title">
+      <div class="section-heading">
+        <div class="heading-icon" aria-hidden="true">＋</div>
+        <div><h2 id="form-title">Agregar estudiante</h2><p>Completa los datos para registrar un nuevo estudiante.</p></div>
+      </div>
+      <form id="student-form" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="first-name">Nombre</label>
+            <input id="first-name" name="nombre" type="text" autocomplete="given-name" placeholder="Ej. Ana" required>
+          </div>
+          <div class="field">
+            <label for="last-name">Apellidos</label>
+            <input id="last-name" name="apellidos" type="text" autocomplete="family-name" placeholder="Ej. Vargas Solano" required>
+          </div>
+          <div class="field field-grade">
+            <label for="grade">Nota</label>
+            <div class="grade-input-wrap"><input id="grade" name="nota" type="number" min="0" max="100" step="any" inputmode="decimal" placeholder="0 – 100" required><span>/ 100</span></div>
+          </div>
+          <button class="button button-primary" type="submit"><span aria-hidden="true">＋</span> Agregar estudiante</button>
+        </div>
+        <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="card roster-card" aria-labelledby="roster-title">
+      <div class="roster-heading">
+        <div class="section-heading">
+          <div class="heading-icon heading-icon-blue" aria-hidden="true">☷</div>
+          <div><h2 id="roster-title">Lista de estudiantes</h2><p>Consulta las notas registradas.</p></div>
+        </div>
+        <span id="student-count" class="count-badge">0 estudiantes</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption class="visually-hidden">Estudiantes registrados con sus notas</caption>
+          <thead><tr><th scope="col">#</th><th scope="col">Nombre</th><th scope="col">Apellidos</th><th scope="col">Nota</th><th scope="col">Resultado</th></tr></thead>
+          <tbody id="student-list"></tbody>
+        </table>
+      </div>
+      <div class="legend" aria-label="Referencia de colores para las notas">
+        <span><i class="legend-dot legend-green"></i>Nota alta: 80 o más</span>
+        <span><i class="legend-dot legend-red"></i>Nota baja: menos de 65</span>
+      </div>
+    </section>
+
+    <section class="summary-section" aria-labelledby="summary-title">
+      <div class="summary-title-row"><div><p class="eyebrow">VISTA GENERAL</p><h2 id="summary-title">Resumen de notas</h2></div><span class="summary-caption">Actualizado automáticamente</span></div>
+      <div class="summary-grid" aria-live="polite">
+        <article class="summary-card top-card"><div class="summary-label"><span class="summary-icon" aria-hidden="true">↗</span>Nota más alta</div><p id="highest-grade" class="summary-value">—</p><p id="highest-student" class="summary-detail">Sin datos</p></article>
+        <article class="summary-card average-card"><div class="summary-label"><span class="summary-icon" aria-hidden="true">∅</span>Promedio general</div><p id="average-grade" class="summary-value">—</p><p class="summary-detail">De todas las notas registradas</p></article>
+        <article class="summary-card low-card"><div class="summary-label"><span class="summary-icon" aria-hidden="true">↘</span>Nota más baja</div><p id="lowest-grade" class="summary-value">—</p><p id="lowest-student" class="summary-detail">Sin datos</p></article>
+      </div>
+    </section>
+    <footer class="page-footer"><span>Registro Académico</span><span>Control de calificaciones <i>•</i> 2026</span></footer>
+  </main>
+</body>
+</html>
